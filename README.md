@@ -12,13 +12,11 @@ mkdir customize-live-ubuntu-cd
 cd customize-live-ubuntu-cd
 sudo mount -o loop ubuntu-18.04.6-desktop-amd64.iso /tmp/livecd 
 
-### 3.
+### 3. Remove rootfs file
 mkdir livecd
 sudo cp -rf /tmp/livecd/* livecd && sync
 sudo rm -rf livecd/casper/filesystem.squashfs
 
-
-### 4. 
 mkdir squashfs
 mkdir squashfs-custom
 
