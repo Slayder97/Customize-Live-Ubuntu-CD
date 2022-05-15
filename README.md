@@ -4,78 +4,78 @@
 ## I. Setup Host
 
 ### 1. Install tools
-sudo apt-get install squashfs-tools chroot
+	sudo apt-get install squashfs-tools chroot
 
 ### 2. mout iSO image to customize-live-ubuntu-cd/livecd
-mkdir /tmp/livecd
-mkdir customize-live-ubuntu-cd
-cd customize-live-ubuntu-cd
-sudo mount -o loop ubuntu-18.04.6-desktop-amd64.iso /tmp/livecd 
+	mkdir /tmp/livecd
+	mkdir customize-live-ubuntu-cd
+	cd customize-live-ubuntu-cd
+	sudo mount -o loop ubuntu-18.04.6-desktop-amd64.iso /tmp/livecd 
 
 ### 3. Remove rootfs file
-mkdir livecd
-sudo cp -rf /tmp/livecd/* livecd && sync
-sudo rm -rf livecd/casper/filesystem.squashfs
+	mkdir livecd
+	sudo cp -rf /tmp/livecd/* livecd && sync
+	sudo rm -rf livecd/casper/filesystem.squashfs
 
-mkdir squashfs
-mkdir squashfs-custom
+	mkdir squashfs
+	mkdir squashfs-custom
 
 ### 5. mout squashfs
-sudo mount -t squashfs -o loop /tmp/livecd/casper/filesystem.squashfs squashfs
-sudo cp -a squashfs/* squashfs-custom/
+	sudo mount -t squashfs -o loop /tmp/livecd/casper/filesystem.squashfs squashfs
+	sudo cp -a squashfs/* squashfs-custom/
 
 ### 6. acess network
-sudo cp -f /etc/resolv.conf /etc/hosts squashfs-custom/etc/
+	sudo cp -f /etc/resolv.conf /etc/hosts squashfs-custom/etc/
 
 ## II. Starting customize
 
 ### 1. mount dev/run
-sudo mount --bind /dev squashfs-custom/dev
-sudo mount --bind /run squashfs-custom/run
+	sudo mount --bind /dev squashfs-custom/dev
+	sudo mount --bind /run squashfs-custom/run
 
 ### 1. Acess chroot
-sudo chroot squashfs-custom
+	sudo chroot squashfs-custom
 
 ### 3. mount proc/sys
-mount -t proc none /proc/
-mount -t sysfs none /sys/
-mount none -t devpts /dev/pts
-export HOME=/root
-export LC_ALL=C
+	mount -t proc none /proc/
+	mount -t sysfs none /sys/
+	mount none -t devpts /dev/pts
+	export HOME=/root
+	export LC_ALL=C
 
 ### 4. Update hostname
-echo "slayder" > /etc/hostname
+	echo "slayder" > /etc/hostname
 
 ### 5. Update apt/source.list
-cat <<EOF > /etc/apt/sources.list
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic main restricted
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic universe
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic-updates universe
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic multiverse
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
-deb http://vn.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu bionic-security main restricted
-deb http://security.ubuntu.com/ubuntu bionic-security universe
-deb http://security.ubuntu.com/ubuntu bionic-security multiverse
-EOF
+	cat <<EOF > /etc/apt/sources.list
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic main restricted
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic universe
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic-updates universe
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic multiverse
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+	deb http://vn.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+	deb http://security.ubuntu.com/ubuntu bionic-security main restricted
+	deb http://security.ubuntu.com/ubuntu bionic-security universe
+	deb http://security.ubuntu.com/ubuntu bionic-security multiverse
+	EOF
 
-sudo apt-get update
+	sudo apt-get update
 
 ### 6. Install unnecessary packages/apps
 
 #### 6.1 install packages
-apt-get install -y \
-    clamav-daemon \
-    terminator \
-    apt-transport-https \
-    software-properties-common \
-    wget \
-    curl \
-    vim \
-    less \
-    ibus-unikey \
-	git 
+	apt-get install -y \
+	    clamav-daemon \
+	    terminator \
+	    apt-transport-https \
+	    software-properties-common \
+	    wget \
+	    curl \
+	    vim \
+	    less \
+	    ibus-unikey \
+		git 
 
 #### 6.2 install apps 
 	// visual code
