@@ -175,13 +175,6 @@
 	autoremove is used to remove packages that were automatically
 	installed to satisfy dependencies for other packages and are now no
 	longer needed.
-
-#### 3.3 remove gnome-games and non-language		
-	sudo apt-get remove --purge gnome-games*
-	sudo apt-get remove --purge `dpkg-query -W --showformat='${Package}\n' | grep language-pack | egrep -v '\-en'`
-	
-	// show all pakages
-	dpkg-query -W --showformat='${Package}\n' | less
 	
 ### 4. Clean tempotary files and quit
 	apt-get clean
