@@ -69,24 +69,24 @@
 
 ### 5. Install packages necessary needed by system
 	apt-get install -y \
-    sudo \
-    ubuntu-standard \
-    casper \
-    lupin-casper \
-    discover \
-    laptop-detect \
-    os-prober \
-    network-manager \
-    resolvconf \
-    net-tools \
-    wireless-tools \
-    wpagui \
-    locales \
-    grub-common \
-    grub-gfxpayload-lists \
-    grub-pc \
-    grub-pc-bin \
-    grub2-common \
+	    sudo \
+	    ubuntu-standard \
+	    casper \
+	    lupin-casper \
+	    discover \
+	    laptop-detect \
+	    os-prober \
+	    network-manager \
+	    resolvconf \
+	    net-tools \
+	    wireless-tools \
+	    wpagui \
+	    locales \
+	    grub-common \
+	    grub-gfxpayload-lists \
+	    grub-pc \
+	    grub-pc-bin \
+	    grub2-common \
 	
 	apt-get install -y --no-install-recommends linux-generic
 	
