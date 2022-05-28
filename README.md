@@ -116,16 +116,16 @@
 	
 ### 1. Install Packages
    apt-get install -y \
-    clamav-daemon \
-    terminator \
-    apt-transport-https \
-    software-properties-common \
-    wget \
-    curl \
-    vim \
-    nano \
-    less \
-    ibus-unikey
+	clamav-daemon \
+	terminator \
+	apt-transport-https \
+	software-properties-common \
+	wget \
+	curl \
+	vim \
+	nano \
+	less \
+	ibus-unikey
 
 ### 2. Install Applications
 	// visual code
