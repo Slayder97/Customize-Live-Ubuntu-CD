@@ -4,7 +4,7 @@
 ## I. Setup Host
 
 ### 1. Install tools
-	sudo apt-get install binutils debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools chroot \
+	sudo apt-get install binutils debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools schroot 
 
 ### 2.	Cấu hình Ubuntu sử dụng debootstrap
 	export HOME=/home/phong/Desktop
