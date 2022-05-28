@@ -7,7 +7,7 @@
 	sudo apt-get install binutils debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools schroot 
 
 ### 2.	Cấu hình Ubuntu sử dụng debootstrap
-	export HOME=/home/phong/Desktop
+	export HOME=/home/phong/
 	mkdir $HOME/customize-live-ubuntu-cd
 	sudo debootstrap --arch=amd64 --variant=minbase bionic $HOME/customize-live-ubuntu-cd/chroot http://vn.archive.ubuntu.com/ubuntu/
 	cat /etc/os-release bionic
