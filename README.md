@@ -184,8 +184,8 @@
 	umount /dev/pts
 	exit	
 	
-	sudo umount $DESKTOP/customize-live-ubuntu-cd/chroot/dev
-	sudo umount $DESKTOP/customize-live-ubuntu-cd/chroot/run
+	sudo umount $HOME/customize-live-ubuntu-cd/chroot/dev
+	sudo umount $HOME/customize-live-ubuntu-cd/chroot/run
 
 ## IV. Create LiveCD
 
