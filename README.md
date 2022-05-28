@@ -102,9 +102,9 @@
 ### 7. Install window manager
 	
 	apt-get install -y \
-    plymouth-theme-ubuntu-logo \
-    ubuntu-gnome-desktop \
-    ubuntu-gnome-wallpapers
+    	plymouth-theme-ubuntu-logo \
+    	ubuntu-gnome-desktop \
+    	ubuntu-gnome-wallpapers
 	
 ### 8. Generate locales
 	dpkg-reconfigure locales
@@ -115,7 +115,17 @@
 ## III. Starting customize
 	
 ### 1. Install Packages
-
+	apt-get install -y \
+		clamav-daemon \
+		terminator \
+		apt-transport-https \
+		software-properties-common \
+		wget \
+		curl \
+		vim \
+		nano \
+		less \
+		ibus-unikey
 ### 2. Install Applications
 	// visual code
 	sudo apt update && sudo apt upgrade -y
