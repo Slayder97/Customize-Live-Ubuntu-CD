@@ -12,8 +12,8 @@
 	// cat /etc/os-release bionic
 	sudo debootstrap --arch=amd64 --variant=minbase bionic $HOME/customize-live-ubuntu-cd/chroot http://vn.archive.ubuntu.com/ubuntu/
 	
-	sudo mount --bind /dev $DESKTOP/customize-live-ubuntu-cd/chroot/dev
-	sudo mount --bind /run $DESKTOP/customize-live-ubuntu-cd/chroot/run
+	sudo mount --bind /dev $HOME/customize-live-ubuntu-cd/chroot/dev
+	sudo mount --bind /run $HOME/customize-live-ubuntu-cd/chroot/run
 
 	   
 	- Debootstrap là công cụ được sử dụng để tạo ra hệ thống Debian từ ban đầu mà không yêu cầu dpkg hoặc apt. 
@@ -24,7 +24,7 @@
 	
 ## II. Basic configuration for chroot
 ### 1.	Đăng nhập vào chroot
-	sudo chroot $DESKTOP/customize-live-ubuntu-cd/chroot
+	sudo chroot $HOME/customize-live-ubuntu-cd/chroot
 	
 	mount none -t proc /proc
 	mount none -t sysfs /sys
