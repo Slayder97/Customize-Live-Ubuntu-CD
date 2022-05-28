@@ -191,8 +191,6 @@
 
 ### 1. mout iSO image to customize-live-ubuntu-cd/livecd
 	mkdir /tmp/livecd
-	mkdir customize-live-ubuntu-cd
-	cd customize-live-ubuntu-cd
 	sudo mount -o loop ubuntu-18.04.6-desktop-amd64.iso /tmp/livecd 
 
 ### 3. Remove rootfs file
@@ -201,17 +199,21 @@
 	sudo rm -rf livecd/casper/filesystem.squashfs
 
 ### 4. Compress chroot -> filesystem.squashfs
-	sudo mksquashfs squashfs-custom livecd/casper/filesystem.squashfs
+	sudo mksquashfs chroot livecd/casper/filesystem.squashfs
 	
-### 5. Recreate manifest file
+### 5. Copy linux -> livecd/casper/
+	sudo cp -rf chroot/boot/vmlinuz-4.15.0-180-generic livecd/casper/vmlinuz
+	sudo cp -rf chroot/boot/initrd.img-4.15.0-180-generic livecd/casper/initrd
+	
+### 6. Recreate manifest file
 	sudo chroot chroot/ dpkg-query -W --showformat='${Package} ${Version}\n' | sudo tee livecd/casper/filesystem.manifest
 	
-### 6. Write the filesystem.size
-	printf $(sudo du -sx --block-size=1 chroot | cut -f1) > image/casper/filesystem.sizefs
+### 7. Write the filesystem.size
+	printf $(sudo du -sx --block-size=1 chroot | cut -f1) > filesystem.size && sudo cp -f filesystem.size livecd/casper/
 	
-### 7. Recreate md5 checksum
-	find livecd -type f -print0 | xargs -0 md5sum > /tmp/md5sum.txt && cp -f /tmp/md5sum.txt .
+### 8. Recreate md5 checksum
+	find livecd -type f -print0 | xargs -0 md5sum > /tmp/md5sum.txt && cp -f /tmp/md5sum.txt livecd
 	
-### 8. Create ISO image
+### 9. Create ISO image
 	cd livecd && sudo mkisofs -r -V "phonglt15-Ubuntu-Live-Custom" -b isolinux/isolinux.bin -c isolinux/boot.cat -cache-inodes -J -l -no-emul-boot \
 	-boot-load-size 4 -boot-info-table -o ../phonglt15-Ubuntu-Live-Custom.iso .
