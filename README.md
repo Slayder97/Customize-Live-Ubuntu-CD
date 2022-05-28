@@ -9,8 +9,8 @@
 ### 2.	Cấu hình Ubuntu sử dụng debootstrap
 	export HOME=/home/phong/
 	mkdir $HOME/customize-live-ubuntu-cd
+	// cat /etc/os-release bionic
 	sudo debootstrap --arch=amd64 --variant=minbase bionic $HOME/customize-live-ubuntu-cd/chroot http://vn.archive.ubuntu.com/ubuntu/
-	cat /etc/os-release bionic
 	
 	sudo mount --bind /dev $DESKTOP/customize-live-ubuntu-cd/chroot/dev
 	sudo mount --bind /run $DESKTOP/customize-live-ubuntu-cd/chroot/run
